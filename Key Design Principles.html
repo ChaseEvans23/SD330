@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Chase's Design Principles</title>
+
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                color: rgb(184, 197, 1);
+                background-color: rgb(0, 0, 0);
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            table {
+                border: 5px solid rgb(0, 81, 255);
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .buttonContainer {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            button {
+                color: ghostwhite;
+                background-color: rgb(100, 3, 3);
+                border: 2px rgb(100, 3, 3) solid;
+                border-radius: 20px;
+                font-size: x-large;
+                font-family: 'Courier New', Courier, monospace;
+                cursor: pointer;
+            }
+
+            .document {
+                display: none;
+                width: 80%;
+                margin-left: 10%;
+            }
+
+        </style>
+    </head>
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <body>
+        <u><i><h1>
+            Key Design Principles - Chase Evans
+        </h1></u></i>
+
+        <div class="buttonContainer">
+            <button id="button" onclick="documentReveal()"><b>Reveal Document</b></button>
+        </div>
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <div class="document">
+            <table border="5">
+                <tr>
+                    <th>Design Principles</th>
+                    <td>List of Considerations</td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Key Design Principles</th>
+                    <td>
+                        <ul>
+                            <li>Visibility</li>
+                            <li>Consistancy</li>
+                            <li>Constraints</li>
+                            <li>Feedback</li>
+                            <li>Affordances</li>
+                            <li>Accessibility</li>
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Complexity Principles</th>
+                    <td>
+                        <ul>
+                            <li>Some disabilites dont allow people to interact in certain ways</li>
+                            <li>Complexity is necessary for systems with lots of functionality</li>
+                            <li>To simplify the user's interaction requires more complexity behind the
+                                scenes</li>
+                            <li>For any system there is a certain amount of complexity which cannot be reduced</li>
+                            <li>Allow users to learn the system by doing (rather than requiring lengthy
+                                tutorials)</li>
+                            <li>Help users adopt more efficient methods in-context learning, tool tips,
+                                etc</li>
+                            <li>Provide fluid pathways</li>
+                            <li>Reduce clutter without reducing functionality</li>
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Cultural/Gender Principles</th>
+                    <td>
+                        <ul>
+                            <li>Different cultures speak different languages</li>
+                            <li>Some cultures read right to left instead of left to right</li>
+                            <li>Choose colors carefully during design process</li>
+                            <li>Certain symbols have different meanings across cultures</li>
+                            <li>Dont rely on auto translation</li>
+                            <li>Words may carry different meanings in other cultures</li>
+                            <li>Individualism vs communitarianism</li>
+                            <li>Designing for gender has considerations:</li>
+                            <ul>
+                                <li>Different colors for gendered products</li>
+                                <li>Different styles of advertizing</li>
+                                <li>Different shapes for the product if its physical</li>
+                                <li>Self care products have different scents</li>
+                            </ul>
+                           
+                        </ul> 
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Conceptional Principles</th>
+                    <td>
+                        <ul>
+                            <li>Jakobs law: users spend most of their time on other sites, 
+                                this means that users prefer your site to work the same way as all the other sites they know</li>
+                            <li>Users transfer expectations they have built from other services to yours</li>
+                            <li>Legacy Problem: too many devices use the existing standard</li>
+                            <li>Utilize mental models</li>
+                        </ul> 
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Emotional Principles</th>
+                    <td>
+                        <ul>
+                            <li>Keep users emotions in mind during design process</li>
+                            <li>Adults and children have different sensitivities</li>
+                            <li>You want your product to evoke a preplanned emotion from your user</li>
+                            <li>Choose colors, fonts, and planned emotion before the design process starts</li>
+                            <li>Emotions can be very nuansed and complex so careful consideration is required</li>
+                            <li>Different culture portray emotions differently</li>
+                            <li>Haptic feedback is a great way to connect the user emotionally to the product, example being a cell phones vibration</li>
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Human Centered Design Principles</th>
+                    <td>
+                        <ul>
+                            <li>Utilize scenarios to try and predict how users would interact with software</li>
+                            <li>Put human needs, capabilities and behavior first</li>
+                            <li>Design to meet those needs</li>
+                            <li>Good communication between people and computers are required</li>
+                            <li>Consider how and when things may go wrong</li>
+                            <li>Provide Feedback</li>
+                            <li>Use a conceptional model</li>
+                            <li>Include affordances, signifiers and constraints</li>
+                            <li>ensure you have good mapping</li>
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>User Interface Design Principles</th>
+                    <td>
+                        <ul>
+                            <li>Dont make users think</li>
+                            <li>Build webpages for scanning not reading</li>
+                            <li>Use visual hierarches, break up pages into clearly designed areas</li>
+                            <li>Make whats clickable obvious</li>
+                            <li>Avoid clutter and disorganization</li>
+                            <li>Avoid using disruptive noises</li>
+                            <li>Instructions should be brief and timely</li>
+                            <li>Omit needless words</li>
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Interface Design Principles</th>
+                    <td>
+                        <ul>
+                            <li>Design with consistency in mind</li>
+                            <li>Keep the interface simple and have a sense of clarity</li>
+                            <li>Give effective feedback and affordances to the users</li>
+                            <li>The interface should enable efficiency and productivity</li>
+                            <li>Mobile Device Design Principles:</li>
+                        
+                            <ul>
+                                <li>Scalable design for various phone sizes</li>
+                                <li>Allow zooming to ensure your site doesnt resist a mobile display</li>
+                                <li>Design for easy use with either 1 or 2 hands</li>
+                                <li>Allow for orientation in either left or right hand</li>
+                                <li>Make important buttons or features large and noticeable</li>
+                                <li>Design app to be held either vertically or horizontally</li>
+                                <li>Address Hicks Law:</li>
+                                <ul>
+                                    <li>As number of options increases, the users reaction time slows</li>
+                                    <li>K.I.S.S. (Keep It Short and Simple)</li>
+                                </ul>
+                            
+                            </ul> 
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th>Cognitive Design Principles</th>
+                    <td>
+                        Attention:
+                        <ul>
+                            <li>Minimize cognitive load</li>
+                            <li>Use visual hierarchy</li>
+                            <li>Feedback and notifications</li>
+                            <li>User-centered default settings<li>
+                        </ul>
+                        Perception:
+                        <ul>
+                            <li>Consistency in design</li>
+                            <li>Feedback through small animation</li>
+                            <li>Chunk relevant information</li>
+                            <li>Enable effective contrast and readability</li>
+                        </ul>
+                        Memory:
+                        <ul>
+                            <li>Clear labels and icons</li>
+                            <li>Effective use of error handling</li>
+                            <li>Utilize progressive disclosure</li>
+                            <li>Affordances and signifiers</li>
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->       
+                <tr>
+                    <th>Error Principles</th>
+                    <td>
+                        <ul>
+                            <li>Make clear error messages</li>
+                            <li>Enable users to recover from errors fast and smooth</li>
+                            <li>Have error handling be consistent</li>
+                            <li>When dealing with errors focus on the users perspective</li>
+                        </ul>
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <tr>
+                    <th></th>
+                    <td>
+
+                    </td>
+                </tr>
+        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->       
+            </table>
+        </div>
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->        
+        <footer style="text-align: center;" >
+            <hr>
+            <small>&#169 Chase Evans - 9/12/23</small>
+        </footer>
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <script>
+            const button = document.getElementById("button");
+            const documentContent = document.querySelector(".document");
+            let documentShown = false;
+
+            function documentReveal() {
+                if (!documentShown) {
+                    documentContent.style.display = "block";
+                    button.textContent = "Hide Document";
+                    documentShown = true;
+                } 
+                else {
+                    documentContent.style.display = "none";
+                    button.textContent = "Reveal Document";
+                    documentShown = false;
+                }
+            }
+
+        </script>
+    </body>
+</html>
