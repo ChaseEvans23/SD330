@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: teal;
+            }
+
+            .app-display {
+                display: flex;
+                display: none;
+            }
+
+            .status {
+                display: inline-flex;
+                margin-left: 36%;
+                margin-right: 36%;
+                color: whitesmoke;
+            }
+
+            .temperature-display {
+                margin-left: 20px;
+            }
+
+            .displays {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fridge-display {
+                display: inline-block;
+                width: fit-content;
+                height: fit-content;
+                border: 5px solid;
+            }
+
+            .tv-display {
+                display: flex;
+                display: none;
+                align-items: right;
+            }
+
+            .browser-display {
+                display: none;
+                align-items: left;
+            }
+
+            .buttons {
+                margin-bottom: 20px;
+                align-items: center;
+                margin-left: 13%;
+                margin-right: 10%;
+            }
+
+            .powerOn {
+                background-color: green;
+                font-size: larger;
+                border-radius: 30px;
+                border: 3px solid;
+            }
+
+            .powerOff {
+                background-color: red;
+                font-size: larger;
+                border: 3px dashed;
+                border-radius: 30px;
+            }
+            
+
+        </style>
+    </head>
+
+    <body>
+    <button id="power-button" class="powerOff" onclick="togglePower()">Power Off</button>
+
+    <div class="app-display">
+
+        <div class="status">
+            <p id="clock-display">00:00:00</p>
+            <p class="temperature-display">37°F</p>
+        </div>
+
+        <div class="buttons">
+            <button id="fridge-button" onclick="checkFridgeContents()">Check Fridge Contents</button>
+            <button id="tv-button" onclick="toggleTVDisplay()">Open TV App</button>
+            <button id="browser-button" onclick="toggleBrowserDisplay()">Open Browser</button>
+        </div>
+
+        <div class="displays">
+            <div class="fridge-display">
+                <img src="https://www.americanchemistry.com/var/site/storage/images/_aliases/image_two_column/8/1/8/7/67818-1-eng-US/Refrigerator.png" height="500px" width="500px" alt="Closed Fridge">
+            </div>
+
+            <div class="tv-display">
+                <img src="https://screentimelabs.com/wp-content/uploads/2018/08/1a-Netflix-home-screen_Netflix.png" height="300px" width="500px" alt="TV">
+            </div>
+
+            <div class="browser-display">
+                <img src="https://www.google.com/chrome/static/images/dark-mode/chrome-classic.png" height="300px" width="500px" alt="Browser">
+            </div>
+        </div>
+
+    </div>
+    <!--//////////////////////////////////////////////////////////////////////////////////////-->
+    <footer style="align-items: center;">
+        <hr>
+        <small>&#169 Chase Evans - 9/12/23</small>
+    </footer>
+    <!--//////////////////////////////////////////////////////////////////////////////////////-->
+
+    <script>
+
+        const powerButton = document.getElementById("power-button");
+        const appDisplay = document.querySelector(".app-display");
+        const clockDisplay = document.getElementById("clock-display");
+
+        const fridgeButton = document.getElementById("fridge-button");
+        const fridgeDisplay = document.querySelector(".fridge-display");
+        const fridgeImage = document.querySelector(".fridge-display img");
+
+        const tvButton = document.getElementById("tv-button");
+        const tvDisplay = document.querySelector(".tv-display");
+
+        const browserButton = document.getElementById("browser-button");
+        const browserDisplay = document.querySelector(".browser-display");
+
+        
+
+        function togglePower() {
+            
+            if (powerButton.textContent == "Power Off") {
+                appDisplay.style.display = "block";
+                powerButton.classList.remove("powerOff");
+                powerButton.classList.add("powerOn");
+                powerButton.textContent = "Power On"
+                startClock();
+            } else {
+                appDisplay.style.display = "none";
+                powerButton.classList.remove("powerOn");
+                powerButton.classList.add("powerOff");
+                powerButton.textContent = "Power Off"
+                stopClock();
+            }
+        }
+
+        function checkFridgeContents() {
+            if (fridgeButton.textContent == "Check Fridge Contents") {
+                fridgeImage.src = "https://static.vecteezy.com/system/resources/previews/024/570/215/large_2x/refrigerator-full-of-healthy-food-fruits-and-vegetables-closeup-an-opened-fridge-full-of-fresh-fruits-and-vegetables-ai-generated-free-photo.jpg"
+                fridgeButton.textContent = "Close Fridge";
+                fridgeButton.style.backgroundColor = "red";
+            } else {
+                fridgeImage.src = "https://www.americanchemistry.com/var/site/storage/images/_aliases/image_two_column/8/1/8/7/67818-1-eng-US/Refrigerator.png"
+                fridgeButton.textContent = "Check Fridge Contents";
+                fridgeButton.style.backgroundColor = "white";
+            }
+        }
+
+        function toggleTVDisplay() {
+            if (tvButton.textContent == "Open TV App") {
+                tvDisplay.style.display = "inline-block";
+                tvButton.textContent = "Close TV App";
+                tvButton.style.backgroundColor = "red";
+                browserButton.style.display = "none"
+            } else {
+                tvDisplay.style.display = "none";
+                tvButton.textContent = "Open TV App";
+                tvButton.style.backgroundColor = "white";
+                browserButton.style.display = "inline-block"
+            }
+        }
+
+        function toggleBrowserDisplay() {
+            if (browserButton.textContent == "Open Browser") {
+                browserDisplay.style.display = "inline-block";
+                browserButton.textContent = "Close Browser";
+                browserButton.style.backgroundColor = "red";
+                tvButton.style.display = "none";
+            } else {
+                browserDisplay.style.display = "none";
+                browserButton.textContent = "Open Browser";
+                browserButton.style.backgroundColor = "white";
+                tvButton.style.display = "inline-block";
+            }
+        }
+
+        ////////////////////CLOCK//////////////////////
+        function startClock() {
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            clockDisplay.textContent = timeString;
+        }
+
+        function stopClock() {
+            clearInterval(updateClock);
+        }
+        ///////////////////////////////////////////////
+
+    </script>
+    </body>
+</html>
