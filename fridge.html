@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+            body {
+                display: flex;
+                color: ghostwhite;
+                font-family: 'Courier New', Courier, monospace;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #1F2833;
+            }
+
+            button {
+                cursor: po;
+            }
+
+            .app-display {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid black;
+                margin-top: 5%;
+                padding: 3%;
+                background-color: #6d6d6d;
+            }
+
+            .upperStatus {
+                justify-content: space-between;
+                width: 100%;
+                
+                margin-bottom: 5px;
+            }
+
+            .status {
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 10px;
+                
+            }
+
+            .statusBar {
+                width: -webkit-fill-available;
+            }
+
+            .time-display {
+                text-align: left;
+            }
+
+            .temp-display {
+                text-align: center;
+            }
+
+            .media-display {
+               border: black solid 4px;
+            }
+
+            .list-display {
+                display: none;
+            }
+
+            .powerOn {
+                background-color: green;
+                font-size: larger;
+                border-radius: 30px;
+                border: 3px solid;
+                margin-bottom: 10px;
+            }
+
+            .powerOff {
+                background-color: red;
+                font-size: larger;
+                border: 3px dashed;
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+
+            .tempUp {
+                background-color: green;
+                border: 1px solid black;
+                border-radius: 20px;
+            }
+            .tempDown {
+                background-color: red;
+                border: 1px solid black;
+                border-radius: 20px;
+            }
+            
+
+        </style>
+    </head>
+
+    <body>
+    
+    <div class="app-display">
+
+        <button id="power-button" class="powerOff" onclick="togglePower()">Power Off</button>
+
+        <div class="upperStatus">
+            
+            <div class="forecast-display">
+                <u><p id="forecast">Today's Forecast: </p></u>
+            </div>
+            <div class="temp-display">
+                <p id="tempDisplay">°F</p>
+                <button style="background-color: aqua;" id="tempMode" onclick="switchTempMode()">C/F</button>
+                <button class="tempUp" id="tempUp" onclick="tempUp()">+</button>
+                <button class="tempDown" id="tempDown" onclick="tempDown()">-</button>
+            </div>
+        </div>
+        
+<hr class="statusBar">
+        
+        <div class="status">
+            <div class="time-display">
+                <p id="clock-display">00:00:00</p>
+                <button style="background-color: aqua;"  id="timeMode" onclick="switchTimeMode()">Time Mode</button>
+            </div>
+            <div class="timer-display">
+                <p id="timerString">60 Second(s)</p>
+                <button style="background-color: aqua;" id="timerButton" onclick="startTimer()">Start Timer</button>
+            </div>
+        </div>
+
+        <div class="media-display">
+            <img src= "https://static.thenounproject.com/png/2986704-200.png" height="500px" width="500px" alt="Closed Fridge">
+        </div>
+
+        <div class="list-display">
+            <ol>
+                <li>Gallon of Milk</li>
+                <li>Whole Wheat Bread</li>
+                <li>2 Bananas</li>
+                <li>Canned Soup</li>
+                <li>Chicken Breasts</li>
+                <li id="listItemInput"><input type="text" id="addItemInput" placeholder="Add Item"></li>
+            </ol>
+        </div>
+        
+
+        <div style="margin-top: 5px;" class="buttons">
+            <button style="background-color: aqua"  id="fridge-button" onclick="checkFridgeContents()">Open Fridge</button>
+            <button style="background-color: aqua"  id="list-button" onclick="toggleList()">Open List</button>
+            <button style="background-color: aqua" id="tv-button" onclick="toggleTVDisplay()">Open TV App</button>
+            <button style="background-color: aqua" id="browser-button" onclick="toggleBrowserDisplay()">Open Browser</button>
+            <button style="background-color: aqua"s id="music-button" onclick="toggleMusicDisplay()">Open Music App</button>
+        </div>
+
+    </div>
+    <!--//////////////////////////////////////////////////////////////////////////////////////-->
+    <footer style="text-align: center; width: 570px;">
+        <hr>
+        <small>&#169 Chase Evans - 9/12/23</small>
+    </footer>
+    <!--//////////////////////////////////////////////////////////////////////////////////////-->
+
+    <script>
+
+        //Displays
+        const appDisplay = document.querySelector(".app-display");
+        const statusDisplay = document.querySelector(".status");
+        const upperStatusDisplay = document.querySelector(".upperStatus");
+        const statusBar = document.querySelector(".statusBar");
+        const clockDisplay = document.getElementById("clock-display");
+        const mediaDisplay = document.querySelector(".media-display");
+        const mediaImage = document.querySelector(".media-display img");
+        const temperature = document.getElementById("tempDisplay");
+        const listDiplay = document.querySelector(".list-display");
+
+        //Buttons
+        const powerButton = document.getElementById("power-button");
+        const fridgeButton = document.getElementById("fridge-button");
+        const tvButton = document.getElementById("tv-button");
+        const browserButton = document.getElementById("browser-button");
+        const musicButton = document.getElementById("music-button");
+        const timerButton = document.getElementById('timerButton');
+        const listButton = document.getElementById("list-button");
+        
+        //////Variables//////////
+
+        //Buttons
+            let isPowerOn = false;
+            let isStatusShown = false;
+            let isFridgeOpen = false;
+            let isTvOn = false;
+            let isBrowserOpen = false;
+            let isMusicOn = false;
+            let isListOpen = false;
+            let buttonNumber = 0;
+        //Functions
+            disableButtons();
+            statusToggle();
+        //Temp
+            let currentTemperature = 37;
+            let currentTempMode = "F";
+            let tempF = true;
+            let tempC = false;
+            const randomTemp = getRandomNumber(32, 40);
+        //Time
+            let timeMode24h = false;
+            let timeString;
+            let timer;
+            let timerRunning = false;
+            let timeRemaining = 10; // in seconds
+        //Forecast
+            const randomForecast = getRandomNumber(1, 4);
+        //Audio
+            let powerUpSounds = new Audio('./powerOn.mp3');
+            let tvSounds = new Audio("./projectorSounds.mp3");
+            let browserSounds = new Audio("./browserAlert.mp3");
+            let fridgeSounds = new Audio("./fridgeSounds.mp3");
+            let alarm = new Audio("./alarm.mp3");
+            let music = new Audio("./music.mp3");
+        //////////////////////////
+            
+        function disableButtons() {
+            switch (buttonNumber) {
+                case 0://Power
+                    fridgeButton.disabled = true;
+                    tvButton.disabled = true;
+                    browserButton.disabled = true;
+                    musicButton.disabled = true;
+                    listButton.disabled = true;
+                    break;
+                case 1://Fridge
+                    tvButton.disabled = true;
+                    browserButton.disabled = true;
+                    musicButton.disabled = true;
+                    listButton.disabled = true;
+                    break;
+                case 2://Tv
+                    fridgeButton.disabled = true;
+                    browserButton.disabled = true;
+                    musicButton.disabled = true;
+                    listButton.disabled = true;
+                    break;
+
+                case 3://Browser
+                    fridgeButton.disabled = true;
+                    tvButton.disabled = true;
+                    musicButton.disabled = true;
+                    listButton.disabled = true;
+                    break;
+
+                case 4://Music
+                    fridgeButton.disabled = true;
+                    tvButton.disabled = true;
+                    browserButton.disabled = true;
+                    listButton.disabled = true;
+                    break;
+                case 5://List
+                    fridgeButton.disabled = true;
+                    tvButton.disabled = true;
+                    browserButton.disabled = true;
+                    musicButton.disabled = true;
+                    break;
+            }
+        }
+
+        function enableButtons() {
+            switch (buttonNumber) {
+                case 0://Power
+                    fridgeButton.disabled = false;
+                    tvButton.disabled = false;
+                    browserButton.disabled = false;
+                    musicButton.disabled = false;
+                    listButton.disabled = false;
+                    break;
+                case 1://Fridge
+                    tvButton.disabled = false;
+                    browserButton.disabled = false;
+                    musicButton.disabled = false;
+                    listButton.disabled = false;
+                    break;
+                case 2://Tv
+                    fridgeButton.disabled = false;
+                    browserButton.disabled = false;
+                    musicButton.disabled = false;
+                    listButton.disabled = false;
+                    break;
+
+                case 3://Browser
+                    fridgeButton.disabled = false;
+                    tvButton.disabled = false;
+                    musicButton.disabled = false;
+                    listButton.disabled = false;
+                    break;
+
+                case 4://Music
+                    fridgeButton.disabled = false;
+                    tvButton.disabled = false;
+                    browserButton.disabled = false;
+                    listButton.disabled = false;
+                    break;
+
+                case 5://List
+                    fridgeButton.disabled = false;
+                    tvButton.disabled = false;
+                    browserButton.disabled = false;
+                    musicButton.disabled = false;
+                    break;
+            }
+        }
+
+
+        function togglePower() {
+            buttonNumber = 0
+            if (!isPowerOn) {
+                powerButton.classList.remove("powerOff");
+                powerButton.classList.add("powerOn");
+                powerButton.textContent = "Power On";
+                mediaImage.src = "https://www.americanchemistry.com/var/site/storage/images/_aliases/image_two_column/8/1/8/7/67818-1-eng-US/Refrigerator.png"
+                enableButtons();
+                isStatusShown = true;
+                tempDisplay.textContent = `${randomTemp}°F`;
+                getRandomForecast(randomForecast);
+                statusToggle();
+                startClock();
+                powerUpSounds.play();
+                isPowerOn = true;
+            } else {
+                powerButton.classList.remove("powerOn");
+                powerButton.classList.add("powerOff");
+                powerButton.textContent = "Power Off";
+                mediaImage.src = "https://static.thenounproject.com/png/2986704-200.png"
+                disableButtons();
+                isStatusShown = false;
+                statusToggle();
+                stopClock();
+                isPowerOn = false;
+            }
+        }
+
+        function checkFridgeContents() {
+            buttonNumber = 1;
+            disableButtons();
+            if (!isFridgeOpen) {
+                mediaImage.src = "https://static.vecteezy.com/system/resources/previews/024/570/215/large_2x/refrigerator-full-of-healthy-food-fruits-and-vegetables-closeup-an-opened-fridge-full-of-fresh-fruits-and-vegetables-ai-generated-free-photo.jpg"
+                fridgeButton.textContent = "Close Fridge";
+                fridgeButton.style.backgroundColor = "red";
+                fridgeSounds.play();
+                isFridgeOpen = true;
+            } else {
+                enableButtons();
+                mediaImage.src = "https://www.americanchemistry.com/var/site/storage/images/_aliases/image_two_column/8/1/8/7/67818-1-eng-US/Refrigerator.png"
+                fridgeButton.textContent = "Open Fridge";
+                fridgeButton.style.backgroundColor = "aqua";
+                fridgeSounds.play();
+                isFridgeOpen = false;
+            }
+        }
+
+        function toggleList() {
+            buttonNumber = 5;
+            disableButtons();
+            if (!isListOpen) {
+                mediaDisplay.style.display = "none";
+                listDiplay.style.display = "inline-block";
+                listButton.textContent = "Close List";
+                listButton.style.backgroundColor = "red";
+                isListOpen = true;
+            } else {
+                enableButtons();
+                mediaDisplay.style.display = "inline-block";
+                listDiplay.style.display = "none";
+                listButton.textContent = "Open List";
+                listButton.style.backgroundColor = "aqua";
+                isListOpen = false;
+            }
+        }
+
+        function toggleTVDisplay() {
+            buttonNumber = 2;
+            disableButtons();
+            if (!isTvOn) {
+                mediaImage.src = "https://media.tenor.com/QJNoPeq9WmUAAAAC/netflix-intro-netflix.gif"
+                tvButton.textContent = "Close TV App";
+                tvButton.style.backgroundColor = "red";
+                tvSounds.play();
+                isTvOn = true;
+            } else {
+                enableButtons();
+                mediaImage.src = "https://www.americanchemistry.com/var/site/storage/images/_aliases/image_two_column/8/1/8/7/67818-1-eng-US/Refrigerator.png"
+                tvButton.textContent = "Open TV App";
+                tvButton.style.backgroundColor = "aqua";
+                browserButton.style.display = "inline-block"
+                tvSounds.pause();
+                isTvOn = false;
+            }
+        }
+
+        function toggleBrowserDisplay() {
+            buttonNumber = 3;
+            disableButtons()
+            if (!isBrowserOpen) {
+                mediaImage.src = "https://i.pinimg.com/originals/18/c1/ed/18c1edb93a605a8f3e8eaf29200a81fd.gif"
+                browserButton.textContent = "Close Browser";
+                browserButton.style.backgroundColor = "red";
+                browserSounds.play();
+                isBrowserOpen = true;
+            } else {
+                enableButtons();
+                mediaImage.src = "https://www.americanchemistry.com/var/site/storage/images/_aliases/image_two_column/8/1/8/7/67818-1-eng-US/Refrigerator.png"
+                browserButton.textContent = "Open Browser";
+                browserButton.style.backgroundColor = "aqua";
+                tvButton.style.display = "inline-block";
+                isBrowserOpen = false;
+            }
+        }
+
+        function toggleMusicDisplay() {
+            buttonNumber = 4;
+            disableButtons()
+            if (!isMusicOn) {
+                mediaImage.src = "https://media.tenor.com/iczjaEFdW20AAAAC/spotify-music.gif"
+                musicButton.textContent = "Close Music App";
+                musicButton.style.backgroundColor = "red";
+                music.play();
+                isMusicOn = true;
+            } else {
+                enableButtons();
+                mediaImage.src = "https://www.americanchemistry.com/var/site/storage/images/_aliases/image_two_column/8/1/8/7/67818-1-eng-US/Refrigerator.png"
+                musicButton.textContent = "Open Music App";
+                musicButton.style.backgroundColor = "aqua";
+                tvButton.style.display = "inline-block";
+                music.pause();
+                isMusicOn = false;
+
+            }
+        }
+
+        function tempUp() {
+            currentTemperature++;
+            updateTemperatureDisplay();
+        }
+
+        function tempDown() {
+            currentTemperature--;
+            updateTemperatureDisplay();
+        }
+
+        function updateTemperatureDisplay() {
+            temperature.textContent = `${currentTemperature}°${currentTempMode}`;
+        }
+
+        function statusToggle() {
+            if (!isStatusShown) {
+                statusDisplay.style.display = "none";
+                upperStatusDisplay.style.display = "none";
+                statusBar.style.display = "none";
+            } else {
+                statusDisplay.style.display = "inline-flex";
+                upperStatusDisplay.style.display = "inline-flex";
+                statusBar.style.display = "inline-flex";
+            }
+        }
+
+        function switchTempMode() {
+
+            if (tempF) {
+                currentTempMode = "C";
+                currentTemperature = Math.ceil((currentTemperature - 32) * 5/9);
+                tempC = true;
+                updateTemperatureDisplay();
+                tempF = false;
+            } else {
+                currentTempMode = "F";
+                currentTemperature = Math.ceil((currentTemperature * 9/5) + 32);
+                tempF = true;
+                updateTemperatureDisplay();
+                tempC = false;
+            }
+        }
+
+        function switchTimeMode() {
+            if (timeMode24h) {
+                timeMode24h = false;
+            }
+            else {
+                timeMode24h = true;
+            }
+        }
+
+        function updateTimerDisplay() {
+            document.getElementById('timerString').textContent = `Time Remaining: ${timeRemaining} Second(s)`;
+        }
+
+        function startTimer() {
+            timeRemaining = 60;
+            const interval = setInterval(function() {
+            timeRemaining--;
+            timerButton.style.display = "none";
+            updateTimerDisplay();
+
+            if (timeRemaining <= 0) {
+                clearInterval(interval);
+                alarm.play();
+                timerButton.style.display = "inline-flex";
+                document.getElementById('timerString').textContent = `60 Second(s)`;
+            }
+        }, 1000);
+    }
+
+        function getRandomNumber(min, max) {
+            // Use Math.random() to generate a random decimal between 0 and 1
+            // Multiply it by the range (max - min), then add the minimum value (min)
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getRandomForecast(num) {
+            switch (num) {
+                case 1:
+                forecast.textContent = "Today's Forecast: Sunny";
+                break;
+
+                case 2:
+                forecast.textContent = "Today's Forecast: Rainy";
+                break;
+
+                case 3:
+                forecast.textContent = "Today's Forecast: Windy";
+                break;
+
+                case 4:
+                forecast.textContent = "Today's Forecast: Cloudy";
+                break;
+            }
+        }
+        
+        const addItemInput = document.getElementById('addItemInput');
+        const listItemInput = document.getElementById('listItemInput');
+        const list = document.querySelector('.list-display ol');
+
+        addItemInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && addItemInput.value.trim() !== '') {
+                //Creates a new list item element with the entered text
+                const newItem = document.createElement('li');
+                newItem.textContent = addItemInput.value;
+
+                //Insert the new item before the input element
+                list.insertBefore(newItem, listItemInput);
+
+                // Clear the input field
+                addItemInput.value = '';
+            }
+        });
+        ////////////////////CLOCK//////////////////////
+        function startClock() {
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            let AmOrPm;
+
+            if (hours >= 12) {
+                AmOrPm = "PM";
+            }
+            if (hours <= 11) {
+                AmOrPm = "AM";
+            }
+
+            if (timeMode24h) {
+                timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${AmOrPm}`;
+            }
+            else {
+                timeString = now.toLocaleTimeString();
+            }
+            
+            clockDisplay.textContent = timeString;
+        }
+
+        function stopClock() {
+            clearInterval(updateClock);
+        }
+        ////////////////////////////////////////////////
+
+    </script>
+    </body>
+</html>
