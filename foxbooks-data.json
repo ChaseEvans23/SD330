@@ -1,0 +1,246 @@
+{
+    "courses": {
+        "120": {
+            "courseNumber": 120,
+            "courseTitle": "Intro to Algebra",
+            "credits": 3,
+            "courseSubject": "Math",
+            "professor": "Evelyn Smith",
+            "numOfSeats": 25,
+            "building": "Dyson",
+            "room": "302",
+            "textbooks": {
+                "1": {
+                    "title": "Fundamentals of Mathematics: A Comprehensive Approach",
+                    "ISBN": "978-1-234567-89-0",
+                    "publisher": "Academic Press",
+                    "edition": 2,
+                    "author": "John Dowerman"
+                },
+                "2": {
+                    "title": "Advanced Algebra and Geometry: Building Mathematical Skills",
+                    "ISBN": "978-0-987654-32-1",
+                    "publisher": "Mathematics Publishing Co.",
+                    "edition": 1,
+                    "author": "Jack Smith"
+                }
+            }
+        },
+
+        "140": {
+            "courseNumber": 140,
+            "courseTitle": "Intro to French",
+            "credits": 3,
+            "courseSubject": "Language",
+            "professor": "Jacques Dubois",
+            "numOfSeats": 20,
+            "building": "Lowell Thomas",
+            "room": "602",
+            "textbooks": {
+                "1": {
+                    "title": "Bonjour! French Language and Culture",
+                    "ISBN": "978-3-210987-65-4",
+                    "publisher": "Stellar Publications",
+                    "edition": 7,
+                    "author": "Alice Johnson"
+                  },
+                "2": {
+                    "title": "Français Avancé: Mastering the French Language",
+                    "ISBN": "978-4-321098-76-5",
+                    "publisher": "Academic Press",
+                    "edition": 5,
+                    "author": "Robert Anderson"
+                }
+            }
+        },
+
+        "180": {
+            "courseNumber": 180,
+            "courseTitle": "History of the Balkans",
+            "credits": 3,
+            "courseSubject": "History",
+            "professor": "Victoria Chang",
+            "numOfSeats": 18,
+            "building": "Fulton",
+            "room": "62",
+            "textbooks": {
+                "1": {
+                    "title": "Bridges of History: A Journey through the Balkans",
+                    "ISBN": "978-0-876543-21-0",
+                    "publisher": "Insightful Learning Press",
+                    "edition": 3,
+                    "author": "Claire Martin"
+                  },
+                "2": {
+                    "title": "The Balkans: A Tapestry of Cultures and Conflicts",
+                    "ISBN": "978-6-543210-98-7",
+                    "publisher": "Insightful Learning Press",
+                    "edition": 1,
+                    "author": "Samuel Lewis"
+                }
+            }
+        },
+
+        "210": {
+            "courseNumber": 210,
+            "courseTitle": "Trigonometry",
+            "credits": 4,
+            "courseSubject": "Math",
+            "professor": "Jonathan Harris",
+            "numOfSeats": 25,
+            "building": "Hancock",
+            "room": "3205",
+            "textbooks": {
+                "1": {
+                    "title": "Trigonometry Mastery: Concepts and Applications",
+                    "ISBN": "978-7-654321-09-8",
+                    "publisher": "Mathematics Publishing Co.",
+                    "edition": 9,
+                    "author": "Emily White"
+                  },
+                "2": {
+                    "title": "Angles and Beyond: Exploring Trigonometric Functions",
+                    "ISBN": "978-2-345678-90-1",
+                    "publisher": "Mathematics Publishing Co.",
+                    "edition": 5,
+                    "author": "Emily White"
+                }   
+            }
+        },
+
+        "230": {
+            "courseNumber": 230,
+            "courseTitle": "Practical Physics",
+            "credits": 4,
+            "courseSubject": "Science",
+            "professor": "Emily Rodriguez",
+            "numOfSeats": 15,
+            "building": "Donnelly",
+            "room": "106",
+            "textbooks": {
+                "1": {
+                    "title": "Principles of Physics: Foundations and Applications",
+                    "ISBN": "978-1-019283-74-5",
+                    "publisher": "Quantum Books",
+                    "edition": 2,
+                    "author": "Christopher Baker"
+                  },
+                "2": {
+                    "title": "Modern Physics: From Quantum Mechanics to Relativity",
+                    "ISBN": "978-9-876543-21-0",
+                    "publisher": "Quantum Books",
+                    "edition": 7,
+                    "author": "Daniel Taylor"
+                }
+            }
+        },
+
+        "260": {
+            "courseNumber": 260,
+            "courseTitle": "Calculus",
+            "credits": 4,
+            "courseSubject": "Math",
+            "professor": "Christopher Lee",
+            "numOfSeats": 23,
+            "building": "Hancock",
+            "room": "2104",
+            "textbooks": {
+                "1": {
+                    "title": "Calculus Essentials: Concepts and Techniques",
+                    "ISBN": "978-3-456789-01-2",
+                    "publisher": "Mathematics Publishing Co.",
+                    "edition": 2,
+                    "author": "Grace Wilson"
+                  },
+                "2": {
+                    "title": "Advanced Calculus: Integrating the Mathematical Landscape",
+                    "ISBN": "978-8-765432-10-9",
+                    "publisher": "Mathematics Publishing Co.",
+                    "edition": 11,
+                    "author": "Ava Davis"
+                }
+            }
+        },
+
+        "270": {
+            "courseNumber": 270,
+            "courseTitle": "Study of the World Wars",
+            "credits": 3,
+            "courseSubject": "History",
+            "professor": "Katherine Turner",
+            "numOfSeats": 30,
+            "building": "Dyson",
+            "room": "221",
+            "textbooks": {
+                "1": {
+                    "title": "The Great War: Understanding World War I",
+                    "ISBN": "978-4-567890-12-3",
+                    "publisher": "Insightful Learning Press",
+                    "edition": 15,
+                    "author": "Nathan Reed"
+                  },
+                "2": {
+                    "title": "World War II Chronicles: A Comprehensive History",
+                    "ISBN": "978-5-678901-23-4",
+                    "publisher": "Insightful Learning Press",
+                    "edition": 12,
+                    "author": "Nathan Reed"
+                }
+            }
+        },
+
+        "310": {
+            "courseNumber": 310,
+            "courseTitle": "Learning Russian",
+            "credits": 3,
+            "courseSubject": "Language",
+            "professor": "Dimitry Petrov",
+            "numOfSeats": 19,
+            "building": "Steel Plant",
+            "room": "014",
+            "textbooks": {
+                "1": {
+                    "title": "Russian Language and Culture: A Comprehensive Guide",
+                    "ISBN": "978-0-543210-98-7",
+                    "publisher": "Academic Press",
+                    "edition": 6,
+                    "author": "Isaac Parker"
+                  },
+                "2": {
+                    "title": "Mastering Russian Grammar: From Basics to Fluency",
+                    "ISBN": "978-6-789012-34-5",
+                    "publisher": "Academic Press",
+                    "edition": 8,
+                    "author": "Matthew Turner"
+                }
+            }
+        },
+
+        "350": {
+            "courseNumber": 350,
+            "courseTitle": "Medical Anatomy",
+            "credits": 4,
+            "courseSubject": "Science",
+            "professor": "Dr. Alexander House",
+            "numOfSeats": 16,
+            "building": "Allied Health",
+            "room": "097",
+            "textbooks": {
+                "1": {
+                    "title": "Human Anatomy: Exploring the Wonders of the Body",
+                    "ISBN": "978-7-890123-45-6",
+                    "publisher": "Medical Press United",
+                    "edition": 12,
+                    "author": "Dr. Liam Carter"
+                  },
+                "2": {
+                    "title": "Clinical Anatomy: Bridging Theory and Practice",
+                    "ISBN": "978-2-109876-54-3",
+                    "publisher": "Medical Press United",
+                    "edition": 4,
+                    "author": "Dr. Liam Carter"
+                }
+            }
+        }
+    }
+}
