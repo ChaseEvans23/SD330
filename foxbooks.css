@@ -1,0 +1,123 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    background: linear-gradient(to bottom, #7c0404, #ff0000);
+    height: 100vh;
+    line-height: 1.6;
+    color: ghostwhite;
+  }
+
+  a {
+    color: #fff020;
+  }
+
+.errorBody {
+    background: linear-gradient(to bottom, #7c0404, #ff0000);
+    color: whitesmoke;
+    display: flex;
+    font-family:monospace;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+}
+
+.headerButtonDiv {
+    display: inline-flex;
+    align-self: center;
+    width: fit-content;
+}
+
+.headerButton {
+    background-color: #fff020;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    border: 2px solid black;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.libraryImage {
+    display: flex; 
+    justify-content: center;
+    border: 5px solid black;
+    width: 70%;
+    margin-inline: auto;
+}
+
+.errorTitle {
+    font-size: 84px;
+    text-align: center;
+    -webkit-text-stroke: 2px black;
+    text-decoration: underline;
+    margin-top: 20px;
+    margin-bottom: 56px;
+}
+
+.errorText {
+    text-align: center;
+    font-size: 32px;
+    -webkit-text-stroke: .8px black;
+}
+
+.errorFox {
+    display:flex;
+    align-self: left;
+    margin-left: 5%;
+}
+
+.errorLogo {
+    display: flex;
+    align-self: center;
+}
+
+.errorButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.errorButton {
+    margin-top: 20px;
+    background-color: #fff020;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.coursePageView {
+    display: inline-flex;
+    width: 100%;
+}
+
+.courseSection {
+    width: 50%;
+}
+
+.textbookSection {
+    width: 50%;
+}
+

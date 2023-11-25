@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Courses</title>
+        <script src="foxbooks.js"></script>
+        <link rel="stylesheet" href="foxbooks.css">
+<!--/////////////////////////////////////////////////////////////////////////////////-->        
+        <header>
+            <div class="headerContainer">
+                <div>
+                    <img src="foxbooks-no-background.png" alt="RedFox" width="160px" height="65px">
+                </div>
+    
+                <div class="headerButtonDiv">
+                    <button class="headerButton" onclick="returnHome()">Home</button>
+                    <button class="headerButton" onclick="viewCourses()">View Courses</button>
+                    <button class="headerButton" onclick="error404()">Order Books</button>
+                    <button class="headerButton" onclick="error404()">Professors</button>
+                    <button class="headerButton" onclick="error404()">Audiobooks</button>
+                    <button class="headerButton" onclick="error404()">Giftcards</button>
+                    <button class="headerButton" onclick="error404()">Leave a Review</button>
+                    <button class="headerButton" onclick="error404()">Contact Us</button>
+                    <button class="headerButton" onclick="error404()">Profile</button>
+                </div> 
+    
+                <div class="profileIcon">
+                    <img src="profile-icon.png" alt="ProfileIcon" width="64px" height="64px">
+                </div>
+            </div> 
+            <hr>
+            </header>
+    </head>
+<!--/////////////////////////////////////////////////////////////////////////////////-->        
+    <body onload="fetchData()">
+        <div class="breadcrumbs">
+            <h4><a href="foxbooks.html">Home</a> >> <a href="courses.html">Courses</a></h4>
+        </div>
+
+        <h1>Select a Course Topic Below</h1>
+
+        <div class="coursePageView">
+            <div class="courseSection">
+                <label for="courseTopics">Browse Course Topics</label>
+                    <select name="course-names" id="course-names" onchange="handleCourseSelection()">
+                        <option value="clearSelection">None</option>
+                        <option value="math">Math</option>
+                        <option value="history">History</option>
+                        <option value="science">Science</option>
+                        <option value="language">Language</option>
+                    </select>
+                <p id="courseInfo"></p>
+            </div>
+
+            <div class="textbookSection">
+                <p id="textbookInfo"></p>
+            </div>
+        </div>
+
+<!--/////////////////////////////////////////////////////////////////////////////////-->
+            <script>
+                function handleCourseSelection() {
+                    var selectedCourse = document.getElementById("course-names").value;
+        
+                    // Call the corresponding function based on the selected course
+                    switch (selectedCourse) {
+                        case "math":
+                            mathCoursesSelected();
+                            break;
+                        case "history":
+                            historyCoursesSelected();
+                            break;
+                        case "science":
+                            scienceCoursesSelected();
+                            break;
+                        case "language":
+                            languageCoursesSelected();
+                            break;
+                        case "clearSelection":
+                            clearSelection();
+                            break;
+                    }
+                }
+            </script>
+<!--/////////////////////////////////////////////////////////////////////////////////-->
+        <footer style="text-align: center;" >
+            <hr>
+            <small>&#169 Chase Evans - FoxBooks - 11/22/23</small>
+        </footer> 
+    </body>
+</html>
