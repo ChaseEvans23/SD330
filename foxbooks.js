@@ -7,7 +7,7 @@ var class3 = false;
 
 
 async function fetchData() {
-    const response = await fetch("https://chaseevans23.github.io/SD330/foxbooks-data.json")
+    const response = await fetch("https://chaseevans23.github.io/SD330/foxbooks.json")
     data = await response.json();
 }
 
